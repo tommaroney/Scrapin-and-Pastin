@@ -1,0 +1,56 @@
+<section class="container">
+    <div class="row">
+        {{#if articles}}
+            {{#each articles}}
+            {{#unless saved}}
+                <div class="col s12 m6">
+                    <div class="card" id={{ringerId}} data-saved={{saved}}>
+                        <div class="card-image">
+                            <img src={{image_url}}>
+                            <button data-target="modal{{ringerId}}" class="btn-floating halfway-fab waves-effect waves-light red modal-trigger"><i class="material-icons">add</i></button>
+                        </div>
+                        <div class="card-content">
+                            <a href="{{link}}" class="card-title truncate">{{title}}</a>
+                            <p>{{blurb}}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#!" id="saveIt" data-id="{{ringerId}}">Save</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal{{ringerId}}" class="modal">
+                    <div class="modal-content">
+                        <h4>Notes</h4>
+                        <hr/>
+                        {{#each notes}}
+                        {{#if active}}
+                        <div class="row" id="{{_id}}">
+                            <div class="col s12">
+                                <div class="card-panel teal small">
+                                    <div class="row">
+                                        <h6 class="white-text col s10">
+                                            {{content}}
+                                        </h6>
+                                        <button class="offset-1 col s1 btn btn-flat noteDelete" value="{{_id}}">
+                                            x
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    <div class="modal-footer">
+                        <form>
+                            <input type="textarea" id="newNote{{ringerId}}">
+                            <button class="postNote modal-close" data-value="{{ringerId}}">Add</button>
+                        </form>
+                    </div>
+                </div>
+            {{/unless}}
+            {{/each}}
+        {{/if}}
+    </div>
+</section>
