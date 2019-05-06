@@ -9,7 +9,7 @@ const app = express();
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.use(express.static("./public"));
 app.use(logger("dev"));
