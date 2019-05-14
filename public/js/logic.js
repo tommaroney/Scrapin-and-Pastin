@@ -65,7 +65,7 @@ $(document).ready(() => {
         }).then(response => location.reload());
     });
 
-    $("#saveIt").click(function(event) {
+    $(".saveIt").click(function(event) {
 
         const savedArticle = { ringerId: $(this).data("id") };
 
